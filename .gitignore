@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+desktop.ini
+
+# Edytory
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logi i tymczasowe
+*.log
+*.tmp
