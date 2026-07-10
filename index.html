@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szablony eBay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text:       #E6EDF3;
+      --muted:      #8B949E;
+      --muted-dim:  #484F58;
+      --border:     #21262D;
+      --border-hov: #30363D;
+      --surface:    #161B22;
+      --surface-2:  #1C2128;
+      --bg:         #0D1117;
+      --teal:       #00BFC8;
+      --teal-dk:    #00929A;
+      --teal-glow:  rgba(0, 191, 200, 0.12);
+      --radius:     12px;
+      --font:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html { height: 100%; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 64px 20px 48px;
+      -webkit-font-smoothing: antialiased;
+      /* Subtle top accent line */
+      border-top: 2px solid var(--teal);
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      width: 100%;
+      max-width: 540px;
+      display: flex;
+      flex-direction: column;
+      gap: 44px;
+      flex: 1;
+    }
+
+    /* ── Header ── */
+    .page-header { display: flex; flex-direction: column; gap: 10px; }
+
+    .page-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .page-header p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+      margin-bottom: 12px;
+    }
+
+    /* ── Cards ── */
+    .cards { display: flex; flex-direction: column; gap: 8px; }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      transition:
+        border-color 0.15s ease,
+        background   0.15s ease,
+        transform    0.15s ease,
+        box-shadow   0.15s ease;
+    }
+
+    .card:hover {
+      border-color: var(--teal);
+      background: var(--surface-2);
+      box-shadow: 0 0 0 3px var(--teal-glow), 0 4px 16px rgba(0,0,0,0.4);
+      transform: translateY(-2px);
+    }
+
+    .card-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--teal);
+      background: rgba(0, 191, 200, 0.1);
+      border: 1px solid rgba(0, 191, 200, 0.22);
+      border-radius: 7px;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .card-body { flex: 1; min-width: 0; }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.4;
+    }
+
+    .card-sub {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-arrow {
+      font-size: 16px;
+      color: var(--muted-dim);
+      flex-shrink: 0;
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+
+    .card:hover .card-arrow {
+      color: var(--teal);
+      transform: translateX(3px);
+    }
+
+    /* Coming-soon card */
+    .card.card-soon {
+      opacity: 0.35;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .card-soon-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted-dim);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 8px;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      font-size: 12px;
+      color: var(--muted-dim);
+      margin-top: auto;
+      padding-top: 28px;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 48px 16px 40px; }
+      .page-header h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="page-header">
+    <h1>Szablony eBay</h1>
+    <p>Kliknij szablon, żeby go otworzyć i zobaczyć podgląd.</p>
+  </header>
+
+  <main>
+    <p class="section-label">Dostępne szablony</p>
+    <div class="cards">
+
+      <!-- Szablon 1 — AKTYWNY -->
+      <a class="card" href="Sellnet Szablon/ebay-template.html" target="_blank" rel="noopener">
+        <div class="card-num">01</div>
+        <div class="card-body">
+          <div class="card-title">Meble garażowe FR4113 - Sellnet</div>
+          <div class="card-sub">Kompletne wyposażenie warsztatu — 3&thinsp;999,00&thinsp;zł</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <!-- Szablon 2 — AKTYWNY -->
+      <a class="card" href="Farys DE Premium/ebay-template.html" target="_blank" rel="noopener">
+        <div class="card-num">02</div>
+        <div class="card-body">
+          <div class="card-title">Meble garażowe FR4113 - Premium DE (moje)</div>
+          <div class="card-sub">Nowy design · Grafitowy + czerwony · Rynek niemiecki</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <!-- Szablon 3 — WKRÓTCE
+           Aby aktywować: usuń klasę "card-soon" i zmień div na a href="..." -->
+      <div class="card card-soon">
+        <div class="card-num">03</div>
+        <div class="card-body">
+          <div class="card-title">Nowy szablon</div>
+          <div class="card-sub">Do przygotowania</div>
+        </div>
+        <span class="card-soon-tag">Wkrótce</span>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="page-footer">© 2026</footer>
+
+</div>
+
+</body>
+</html>

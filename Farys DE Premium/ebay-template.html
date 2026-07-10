@@ -1,0 +1,1172 @@
+<!--
+════════════════════════════════════════════════════════════════════════
+  JAK EDYTOWAĆ TEN SZABLON
+════════════════════════════════════════════════════════════════════════
+
+  Każde miejsce do edycji oznaczone jest w kodzie komentarzem ✏️
+  z dokładnym opisem co i jak zmienić.
+
+  Przejść przez wszystkie pola:
+    CTRL+F → wpisz ✏️ → klikaj "Następny"
+
+  Zmienić konkretną wartość:
+    CTRL+H → stara wartość → nowa wartość → Zamień wszystko → CTRL+S
+
+  Przez AI (np. Claude / ChatGPT):
+    Wklej cały plik i napisz np. "Zmień cenę na 2 499 zł, tytuł na XYZ"
+
+  Sklep domyślny w linkach: farys7shop
+    Zmiana sklepu: CTRL+H → "farys7shop" → nazwa Twojego sklepu
+
+════════════════════════════════════════════════════════════════════════
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ✏️ TYTUŁ ZAKŁADKI — zmień na tytuł swojego produktu -->
+  <title>FR4113 — Meble garażowe warsztatowe | Farys Shop</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ════════════════════════════════════════════════════════════
+       FARYS PREMIUM DE — Template v2
+       Farys.pl | Premium Garage & Workshop Equipment
+       Scoped under #ft2 — nie koliduje ze stylami eBay
+       ════════════════════════════════════════════════════════════ */
+
+    /* ── KOLORY — zmień wartości żeby dostosować paletę ── */
+    :root {
+      --c-dark:     #1E2229;   /* Nagłówek i stopka              */
+      --c-dark-2:   #262D38;   /* Gradient w hero                */
+      --c-red:      #C0392B;   /* Akcent — przyciski, podkreślenia */
+      --c-red-h:    #A93226;   /* Czerwony po najechaniu         */
+      --c-bg:       #F2F4F6;   /* Tło strony                     */
+      --c-surface:  #FFFFFF;   /* Tło kart i sekcji              */
+      --c-text:     #1A1F2B;   /* Główny tekst                   */
+      --c-text-2:   #5C6476;   /* Tekst drugorzędny              */
+      --c-border:   #DFE3EA;   /* Linie ramek                    */
+      --c-strip:    #F8F9FA;   /* Alternujące tło tabeli         */
+    }
+
+    /* Reset */
+    #ft2, #ft2 *, #ft2 *::before, #ft2 *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    #ft2 input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    #ft2 {
+      font-family: 'Inter', Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      color: var(--c-text);
+      background: var(--c-bg);
+      max-width: 980px;
+      margin: 0 auto;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       NAGŁÓWEK
+       ──────────────────────────────────────────────────────────── */
+    #ft2 .hdr {
+      background: var(--c-dark);
+      border-bottom: 2px solid var(--c-red);
+    }
+
+    #ft2 .hdr-inner {
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 16px;
+    }
+
+    #ft2 .hdr-logo {
+      display: block;
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    #ft2 .hdr-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+    }
+
+    #ft2 .hdr-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      padding: 6px 12px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    #ft2 .hdr-nav a:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.07);
+    }
+
+    #ft2 .hdr-nav .nav-cta {
+      background: var(--c-red);
+      color: #fff;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    #ft2 .hdr-nav .nav-cta:hover {
+      background: var(--c-red-h);
+      color: #fff;
+    }
+
+    #ft2 .hdr-nav svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       HERO — Zdjęcie + Dane produktu
+       ──────────────────────────────────────────────────────────── */
+    #ft2 .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--c-dark-2);
+      min-height: 420px;
+    }
+
+    #ft2 .hero-photo {
+      background: #1A1F28;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #ft2 .hero-photo img {
+      width: 100%;
+      height: 100%;
+      max-height: 480px;
+      object-fit: contain;
+      display: block;
+      padding: 24px;
+    }
+
+    #ft2 .hero-data {
+      padding: 36px 32px 36px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 22px;
+    }
+
+    #ft2 .hero-sku {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--c-red);
+    }
+
+    #ft2 .hero-title {
+      font-family: 'Montserrat', 'Arial Black', Arial, sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #FFFFFF;
+    }
+
+    #ft2 .hero-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      border-left: 3px solid var(--c-red);
+      padding-left: 14px;
+    }
+
+    #ft2 .hero-price {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    #ft2 .hero-price-note {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.38);
+    }
+
+    #ft2 .hero-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    #ft2 .hero-bullet {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.45;
+    }
+
+    #ft2 .bul-dot {
+      width: 5px;
+      height: 5px;
+      min-width: 5px;
+      border-radius: 50%;
+      background: var(--c-red);
+      margin-top: 6px;
+    }
+
+    #ft2 .btn-kup {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      background: var(--c-red);
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 13px 26px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      align-self: flex-start;
+    }
+
+    #ft2 .btn-kup:hover {
+      background: var(--c-red-h);
+      transform: translateY(-1px);
+    }
+
+    #ft2 .btn-kup svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       TRUST BAR
+       ──────────────────────────────────────────────────────────── */
+    #ft2 .trust {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--c-surface);
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    #ft2 .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 24px;
+      border-right: 1px solid var(--c-border);
+    }
+
+    #ft2 .trust-item:last-child {
+      border-right: none;
+    }
+
+    #ft2 .trust-icon {
+      font-size: 26px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    #ft2 .trust-copy strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--c-text);
+      line-height: 1.3;
+      margin-bottom: 1px;
+    }
+
+    #ft2 .trust-copy span {
+      font-size: 11.5px;
+      color: var(--c-text-2);
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       VORTEILE AUF EINEN BLICK
+       ──────────────────────────────────────────────────────────── */
+    #ft2 .vorteile {
+      background: var(--c-dark);
+      padding: 28px;
+    }
+
+    #ft2 .vorteile-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-red);
+      margin-bottom: 14px;
+    }
+
+    #ft2 .vorteile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    #ft2 .vorteil {
+      display: flex;
+      gap: 10px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 5px;
+    }
+
+    #ft2 .vorteil-ico {
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    #ft2 .vorteil-copy strong {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+
+    #ft2 .vorteil-copy span {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.38);
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       SEKCJA TYTUŁOWA (shared style)
+       ──────────────────────────────────────────────────────────── */
+    #ft2 .sec-head {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--c-text-2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--c-border);
+      margin-bottom: 16px;
+    }
+
+    #ft2 .sec-head::before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 14px;
+      background: var(--c-red);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       HAUPTBEREICH
+       ──────────────────────────────────────────────────────────── */
+    #ft2 .main {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       BESCHREIBUNG (cechy w siatce 2-kolumnowej)
+       ──────────────────────────────────────────────────────────── */
+    #ft2 .merkmal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    #ft2 .merkmal {
+      display: flex;
+      gap: 12px;
+      padding: 15px 16px;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 6px;
+      transition: border-color 0.15s;
+    }
+
+    #ft2 .merkmal:hover {
+      border-color: rgba(192,57,43,0.28);
+    }
+
+    #ft2 .merkmal-ico {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      line-height: 1;
+    }
+
+    #ft2 .merkmal strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-text);
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+
+    #ft2 .merkmal p {
+      font-size: 12.5px;
+      color: var(--c-text-2);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       TECHNISCHE DATEN + LIEFERUMFANG
+       ──────────────────────────────────────────────────────────── */
+    #ft2 .data-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    #ft2 .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    #ft2 .spec-table tr {
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    #ft2 .spec-table tr:last-child {
+      border-bottom: none;
+    }
+
+    #ft2 .spec-table tr:nth-child(even) {
+      background: var(--c-strip);
+    }
+
+    #ft2 .spec-table td {
+      padding: 9px 14px;
+      vertical-align: top;
+    }
+
+    #ft2 .spec-table td:first-child {
+      font-weight: 600;
+      color: var(--c-text-2);
+      width: 46%;
+      border-right: 1px solid var(--c-border);
+    }
+
+    #ft2 .spec-table td:last-child {
+      color: var(--c-text);
+    }
+
+    #ft2 .liefer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    #ft2 .liefer-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 9px 14px;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 5px;
+      font-size: 13.5px;
+      color: var(--c-text);
+    }
+
+    #ft2 .liefer-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--c-red);
+      background: rgba(192,57,43,0.08);
+      border-radius: 4px;
+      padding: 2px 6px;
+      flex-shrink: 0;
+      letter-spacing: 0.03em;
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       KÄUFERINFO TABS (CSS-only, bez JavaScript)
+       ──────────────────────────────────────────────────────────── */
+    #ft2 .tabs-wrap {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 7px;
+      overflow: hidden;
+    }
+
+    #ft2 .tabs-bar {
+      display: flex;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    #ft2 .tabs-bar label {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 13px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--c-text-2);
+      cursor: pointer;
+      border-right: 1px solid var(--c-border);
+      border-bottom: 3px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.14s, background 0.14s;
+      user-select: none;
+    }
+
+    #ft2 .tabs-bar label:last-child {
+      border-right: none;
+    }
+
+    #ft2 .tabs-bar label:hover {
+      color: var(--c-text);
+      background: var(--c-strip);
+    }
+
+    #ft2 .tabs-bar label svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* Aktywna zakładka */
+    #ti1:checked ~ .tabs-bar label:nth-child(1),
+    #ti2:checked ~ .tabs-bar label:nth-child(2),
+    #ti3:checked ~ .tabs-bar label:nth-child(3) {
+      color: var(--c-red);
+      border-bottom-color: var(--c-red);
+      background: var(--c-surface);
+    }
+
+    #ft2 .tab-panel {
+      display: none;
+      padding: 22px 24px;
+      font-size: 14px;
+      color: var(--c-text);
+      line-height: 1.7;
+    }
+
+    #ft2 .tab-panel p {
+      margin-bottom: 12px;
+    }
+
+    #ft2 .tab-panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    #ti1:checked ~ .tab-panel.p1,
+    #ti2:checked ~ .tab-panel.p2,
+    #ti3:checked ~ .tab-panel.p3 {
+      display: block;
+    }
+
+    #ft2 .carrier-row {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    #ft2 .carrier {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: var(--c-strip);
+      border: 1px solid var(--c-border);
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--c-text);
+    }
+
+    #ft2 .carrier-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--c-red);
+      flex-shrink: 0;
+    }
+
+    #ft2 .payment-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    #ft2 .payment-chip {
+      padding: 5px 12px;
+      background: var(--c-strip);
+      border: 1px solid var(--c-border);
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--c-text);
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       STOPKA
+       ──────────────────────────────────────────────────────────── */
+    #ft2 .ftr {
+      background: var(--c-dark);
+      border-top: 2px solid var(--c-red);
+    }
+
+    #ft2 .ftr-inner {
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    #ft2 .ftr-logo {
+      height: 34px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    #ft2 .ftr-nav {
+      display: flex;
+      gap: 2px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    #ft2 .ftr-nav a {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.42);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: color 0.14s;
+    }
+
+    #ft2 .ftr-nav a:hover {
+      color: rgba(255,255,255,0.82);
+    }
+
+    #ft2 .ftr-hours {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.32);
+    }
+
+    #ft2 .ftr-hours svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      color: var(--c-red);
+      opacity: 0.65;
+    }
+
+    /* ────────────────────────────────────────────────────────────
+       RESPONSYWNOŚĆ
+       ──────────────────────────────────────────────────────────── */
+    @media screen and (max-width: 720px) {
+      #ft2 .hero { grid-template-columns: 1fr; }
+      #ft2 .hero-photo { min-height: 260px; }
+      #ft2 .hero-data { padding: 22px 18px; gap: 16px; }
+      #ft2 .hero-title { font-size: 18px; }
+      #ft2 .hero-price { font-size: 28px; }
+      #ft2 .trust { grid-template-columns: 1fr; }
+      #ft2 .trust-item { border-right: none; border-bottom: 1px solid var(--c-border); }
+      #ft2 .trust-item:last-child { border-bottom: none; }
+      #ft2 .vorteile-grid { grid-template-columns: 1fr 1fr; }
+      #ft2 .merkmal-grid { grid-template-columns: 1fr; }
+      #ft2 .data-cols { grid-template-columns: 1fr; }
+      #ft2 .hdr-inner { padding: 0 16px; }
+      #ft2 .hdr-nav a:not(.nav-cta) { display: none; }
+      #ft2 .main { padding: 22px 16px; gap: 28px; }
+      #ft2 .tabs-bar label { font-size: 12px; padding: 11px 8px; }
+      #ft2 .tabs-bar label svg { display: none; }
+      #ft2 .ftr-inner { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px; }
+    }
+
+    @media screen and (max-width: 480px) {
+      #ft2 .vorteile-grid { grid-template-columns: 1fr; }
+      #ft2 .vorteile { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body style="background:#E5E8ED; margin:0; padding:20px 0; font-family:Arial,sans-serif;">
+
+<!-- Wrapper podglądu (nie jest częścią szablonu eBay) -->
+<div style="max-width:980px; margin:0 auto;">
+
+<!-- ════════════════════════════════════════════════════════════════════
+     EBAY DESCRIPTION START — Skopiuj wszystko od tej linii ↓
+     ════════════════════════════════════════════════════════════════════ -->
+<div id="ft2">
+
+  <!-- ════════════════════════
+       NAGŁÓWEK
+       ════════════════════════ -->
+  <header class="hdr">
+    <div class="hdr-inner">
+
+      <!-- ✏️ LOGO
+           src="../src/logo.png"  ← zmień na pełny link https:// do logo
+           Przykład: src="https://twoja-domena.pl/logo.png"
+           Na eBay działają TYLKO linki https://, nie lokalne ścieżki -->
+      <a href="https://www.ebay.de/str/farys7shop" target="_blank" rel="noopener">
+        <img class="hdr-logo" src="../src/logo.png" alt="Farys — Premium Werkzeuge" width="160" height="40">
+      </a>
+
+      <!-- ✏️ LINKI NAWIGACJI
+           Zmiana sklepu: CTRL+H → "farys7shop" → nazwa Twojego sklepu
+           Jedna zmiana zaktualizuje WSZYSTKIE linki w szablonie na raz -->
+      <ul class="hdr-nav">
+        <li>
+          <a href="https://www.ebay.de/cnt/intermediatedFAQ?requested=farys7shop" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Kontakt
+          </a>
+        </li>
+        <li>
+          <a href="https://www.ebay.de/str/farys7shop?_tab=2" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Bewertungen
+          </a>
+        </li>
+        <li>
+          <a class="nav-cta" href="https://www.ebay.de/str/farys7shop" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Unser Shop
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </header>
+
+  <!-- ════════════════════════
+       HERO: Zdjęcie + Dane
+       ════════════════════════ -->
+  <div class="hero">
+
+    <!-- Lewa: zdjęcie -->
+    <div class="hero-photo">
+      <!-- ✏️ ZDJĘCIE GŁÓWNE
+           src="../src/produkt.webp"  ← zmień na pełny link https:// do zdjęcia
+           Przykład: src="https://twoja-domena.pl/zdjecie.jpg"
+           alt= ← zmień opis na nazwę swojego produktu -->
+      <img src="../src/produkt.webp"
+           alt="Meble garażowe warsztatowe FR4113 — kompletny zestaw"
+           loading="eager"
+           style="max-width:100%; height:auto;">
+    </div>
+
+    <!-- Prawa: dane produktu -->
+    <div class="hero-data">
+
+      <!-- ✏️ KATEGORIA / SKU — krótka etykieta nad tytułem, np. "FR4113 — Meble warsztatowe" -->
+      <span class="hero-sku">FR4113 — Meble warsztatowe</span>
+
+      <!-- ✏️ TYTUŁ PRODUKTU — pełna nazwa produktu
+           Pamiętaj zmienić też <title> na górze pliku -->
+      <h1 class="hero-title">Meble garażowe warsztatowe Regał szafka do warsztatu garażu FR4113</h1>
+
+      <!-- ✏️ CENA
+           Pamiętaj zmienić też cenę w przycisku "Kup Teraz" poniżej -->
+      <div class="hero-price-row">
+        <span class="hero-price">3 999,00 zł</span>
+        <span class="hero-price-note">inkl. MwSt.</span>
+      </div>
+
+      <!-- ✏️ HIGHLIGHTS — 3 krótkie punkty przy cenie
+           Zmień tekst każdego <span> (część po <span class="bul-dot">) -->
+      <div class="hero-bullets">
+        <div class="hero-bullet">
+          <span class="bul-dot"></span>
+          <span>Stal malowana proszkowo — odporna na oleje i chemikalia</span>
+        </div>
+        <div class="hero-bullet">
+          <span class="bul-dot"></span>
+          <span>Drewniany blat roboczy 183 × 38 × 2,5 cm w zestawie</span>
+        </div>
+        <div class="hero-bullet">
+          <span class="bul-dot"></span>
+          <span>Mobilny wózek z 6 szufladami na zamek + 25 haków</span>
+        </div>
+      </div>
+
+      <!-- ✏️ PRZYCISK KUP TERAZ
+           1. W href= zmień "TWOJ_NUMER_ITEMU" na swój numer przedmiotu eBay
+              Przykład: &item=387654321098
+           2. Zmień cenę "3 999,00 zł" w tekście przycisku (musi być taka sama jak CENA powyżej) -->
+      <a class="btn-kup"
+         href="https://offer.ebay.de/ws/eBayISAPI.dll?BinConfirm&amp;item=TWOJ_NUMER_ITEMU"
+         target="_blank"
+         rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Kup Teraz — 3 999,00 zł
+      </a>
+
+    </div>
+  </div>
+  <!-- end .hero -->
+
+  <!-- ════════════════════════
+       TRUST BAR
+       ════════════════════════ -->
+  <!-- ✏️ PASEK ZAUFANIA — 3 kafelki z emoji, tytułem i podtytułem
+       Zmień emoji (.trust-icon), tekst <strong> i <span> w każdym .trust-item
+       Dodaj/usuń kafelki kopiując lub usuwając całe <div class="trust-item"> -->
+  <div class="trust">
+    <div class="trust-item">
+      <span class="trust-icon">🚚</span>
+      <div class="trust-copy">
+        <strong>Szybka Wysyłka</strong>
+        <span>Wysyłka następnego dnia roboczego</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🛡️</span>
+      <div class="trust-copy">
+        <strong>12 Miesięcy Gwarancji</strong>
+        <span>Pomocna obsługa klienta</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">⭐</span>
+      <div class="trust-copy">
+        <strong>Najlepsze Opinie</strong>
+        <span>Zaufanie tysięcy klientów</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════
+       VORTEILE AUF EINEN BLICK
+       ════════════════════════ -->
+  <div class="vorteile">
+    <p class="vorteile-eyebrow">Vorteile auf einen Blick</p>
+    <!-- ✏️ VORTEILE — 4 kafelki z kluczowymi zaletami produktu (na ciemnym tle)
+         Zmień emoji, tekst <strong> i <span> w każdym .vorteil
+         Dodaj/usuń kafelki kopiując lub usuwając całe <div class="vorteil"> -->
+    <div class="vorteile-grid">
+      <div class="vorteil">
+        <span class="vorteil-ico">🏗️</span>
+        <div class="vorteil-copy">
+          <strong>Kompletny zestaw</strong>
+          <span>Regał, szafka, wózek, panel ścienny</span>
+        </div>
+      </div>
+      <div class="vorteil">
+        <span class="vorteil-ico">💪</span>
+        <div class="vorteil-copy">
+          <strong>Stalowa konstrukcja</strong>
+          <span>Odporna na oleje i chemikalia</span>
+        </div>
+      </div>
+      <div class="vorteil">
+        <span class="vorteil-ico">🔐</span>
+        <div class="vorteil-copy">
+          <strong>Zamykane drzwi</strong>
+          <span>Szafki i wózek z zamkami</span>
+        </div>
+      </div>
+      <div class="vorteil">
+        <span class="vorteil-ico">📐</span>
+        <div class="vorteil-copy">
+          <strong>260 × 189 × 46 cm</strong>
+          <span>Pełny wymiar zestawu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════
+       GŁÓWNA TREŚĆ
+       ════════════════════════ -->
+  <div class="main">
+
+    <!-- ── BESCHREIBUNG ──────────────────────────── -->
+    <section>
+      <h2 class="sec-head">Beschreibung</h2>
+      <!-- ✏️ CECHY PRODUKTU — siatka 2-kolumnowa
+           Każde <div class="merkmal"> to jedna karta z emoji + tytułem + opisem.
+           Zmień emoji (.merkmal-ico), tekst <strong> i tekst <p>.
+           Skopiuj lub usuń całe <div class="merkmal">...</div> żeby dodać/usunąć cechę -->
+      <div class="merkmal-grid">
+
+        <div class="merkmal">
+          <span class="merkmal-ico">🏗️</span>
+          <div>
+            <strong>Kompletny zestaw modułowy</strong>
+            <p>Wszystko czego potrzebujesz w warsztacie — w jednym zestawie. Regał górny, szafka dolna z blatem, wózek narzędziowy i panel ścienny.</p>
+          </div>
+        </div>
+
+        <div class="merkmal">
+          <span class="merkmal-ico">💪</span>
+          <div>
+            <strong>Stalowa konstrukcja — trwałość na lata</strong>
+            <p>Wykonane ze stali malowanej proszkowo, odporne na uderzenia, oleje i chemikalia warsztatowe.</p>
+          </div>
+        </div>
+
+        <div class="merkmal">
+          <span class="merkmal-ico">🪵</span>
+          <div>
+            <strong>Masywny blat roboczy (183 × 38 × 2,5 cm)</strong>
+            <p>Gruby blat z drewna litego — odporny na uszkodzenia, łatwy do regeneracji. Idealny do codziennej pracy warsztatowej.</p>
+          </div>
+        </div>
+
+        <div class="merkmal">
+          <span class="merkmal-ico">🔧</span>
+          <div>
+            <strong>Mobilny wózek z 6 szufladami</strong>
+            <p>Szuflady z zamkiem — bezpieczne przechowywanie narzędzi. Kółka z blokadą do ustawienia wózka tam, gdzie potrzeba.</p>
+          </div>
+        </div>
+
+        <div class="merkmal">
+          <span class="merkmal-ico">📌</span>
+          <div>
+            <strong>Panel narzędziowy z 25 hakami</strong>
+            <p>Ścienny panel perforowany z kompletem 25 haków. Narzędzia zawsze pod ręką, warsztat zawsze w porządku.</p>
+          </div>
+        </div>
+
+        <div class="merkmal">
+          <span class="merkmal-ico">🔩</span>
+          <div>
+            <strong>Amortyzatory gazowe w szafkach górnych</strong>
+            <p>Drzwi otwierają się płynnie i bezpiecznie — komfort i bezpieczeństwo codziennej pracy.</p>
+          </div>
+        </div>
+
+        <div class="merkmal">
+          <span class="merkmal-ico">🔐</span>
+          <div>
+            <strong>Zamykane drzwi — bezpieczne przechowywanie</strong>
+            <p>Wszystkie szafki wyposażone w zamki. Narzędzia zabezpieczone przed nieuprawnionym dostępem.</p>
+          </div>
+        </div>
+
+        <div class="merkmal">
+          <span class="merkmal-ico">📐</span>
+          <div>
+            <strong>Wymiary zestawu: 260 × 189 × 46 cm</strong>
+            <p>Szerokość: 260 cm &ensp;·&ensp; Wysokość: 189 cm &ensp;·&ensp; Głębokość: 46 cm</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── TECHNISCHE DATEN + LIEFERUMFANG ──────── -->
+    <section>
+      <div class="data-cols">
+
+        <div>
+          <h2 class="sec-head">Technische Daten</h2>
+          <!-- ✏️ TABELA SPECYFIKACJI
+               Każdy <tr> = jeden wiersz: <td>Nazwa cechy</td><td>Wartość</td>
+               Zmień wartości po prawej stronie.
+               Dodaj wiersz: skopiuj <tr>...</tr>. Usuń: usuń cały <tr>. -->
+          <table class="spec-table">
+            <tbody>
+              <tr><td>Marka</td><td>FR</td></tr>
+              <tr><td>Model</td><td>FR4113</td></tr>
+              <tr><td>Typ</td><td>Meble warsztatowe</td></tr>
+              <tr><td>Materiał</td><td>Stal malowana proszkowo + drewno</td></tr>
+              <tr><td>Szerokość całkowita</td><td>260 cm</td></tr>
+              <tr><td>Wysokość całkowita</td><td>189 cm</td></tr>
+              <tr><td>Głębokość</td><td>46 cm</td></tr>
+              <tr><td>Wymiary blatu</td><td>183 × 38 × 2,5 cm</td></tr>
+              <tr><td>Liczba szuflad</td><td>6 szt.</td></tr>
+              <tr><td>Haki w zestawie</td><td>25 szt.</td></tr>
+              <tr><td>Zamki</td><td>Tak (szafka i wózek)</td></tr>
+              <tr><td>Amortyzatory gazowe</td><td>Tak (szafki górne)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <h2 class="sec-head">Lieferumfang</h2>
+          <!-- ✏️ ZAWARTOŚĆ ZESTAWU
+               Zmień tekst każdego <li class="liefer-item"> (po zamknięciu </span>).
+               Numery czerwone <span class="liefer-num"> zaktualizuj ręcznie.
+               Skopiuj lub usuń całe <li>...</li> żeby dodać/usunąć pozycję. -->
+          <ul class="liefer-list">
+            <li class="liefer-item"><span class="liefer-num">01</span>1× Szafka górna z amortyzatorami</li>
+            <li class="liefer-item"><span class="liefer-num">02</span>1× Szafka dolna z blatem roboczym</li>
+            <li class="liefer-item"><span class="liefer-num">03</span>1× Wózek narzędziowy (6 szuflad)</li>
+            <li class="liefer-item"><span class="liefer-num">04</span>1× Panel narzędziowy ścienny</li>
+            <li class="liefer-item"><span class="liefer-num">05</span>25× Hak narzędziowy</li>
+            <li class="liefer-item"><span class="liefer-num">06</span>1× Blat drewniany (183 × 38 × 2,5 cm)</li>
+            <li class="liefer-item"><span class="liefer-num">07</span>Akcesoria montażowe + instrukcja</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── KÄUFERINFO TABS ───────────────────────── -->
+    <section>
+      <h2 class="sec-head">Käuferinformationen</h2>
+
+      <!-- CSS-ONLY TABS
+           Kontrolki radio MUSZĄ być bezpośrednio wewnątrz .tabs-wrap
+           PRZED .tabs-bar i panelami .tab-panel -->
+      <div class="tabs-wrap">
+
+        <input type="radio" name="tabs" id="ti1" checked aria-label="Lieferung">
+        <input type="radio" name="tabs" id="ti2" aria-label="Zahlung">
+        <input type="radio" name="tabs" id="ti3" aria-label="Rückgabe">
+
+        <div class="tabs-bar">
+          <label for="ti1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Lieferung
+          </label>
+          <label for="ti2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Zahlung
+          </label>
+          <label for="ti3">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10"/><path d="M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+            Rückgabe
+          </label>
+        </div>
+
+        <!-- ✏️ ZAKŁADKA LIEFERUNG — zmień treść <p> i nazwy przewoźników
+             Przewoźnicy: zmień tekst lub dodaj/usuń <div class="carrier"> -->
+        <div class="tab-panel p1">
+          <p>Po zaksięgowaniu płatności towar jest starannie pakowany i przekazywany do przewoźnika w ciągu <strong>1–2 dni roboczych</strong>. Możesz śledzić przesyłkę online po podaniu numeru nadania.</p>
+          <p>W przypadku mebli warsztatowych wysyłamy na palecie przez kuriera. Prosimy o upewnienie się, że adres dostawy umożliwia rozładunek.</p>
+          <!-- ✏️ PRZEWOŹNICY — zmień tekst lub dodaj/usuń <div class="carrier"> -->
+          <div class="carrier-row">
+            <div class="carrier"><span class="carrier-dot"></span>DHL</div>
+            <div class="carrier"><span class="carrier-dot"></span>GLS</div>
+            <div class="carrier"><span class="carrier-dot"></span>InPost Kurier</div>
+          </div>
+        </div>
+
+        <!-- ✏️ ZAKŁADKA ZAHLUNG — zmień metody płatności
+             Dodaj/usuń <span class="payment-chip"> -->
+        <div class="tab-panel p2">
+          <p>Akceptujemy wszystkie popularne metody płatności dostępne na platformie eBay:</p>
+          <div class="payment-row">
+            <span class="payment-chip">PayPal</span>
+            <span class="payment-chip">Kreditkarte</span>
+            <span class="payment-chip">Debitkarte</span>
+            <span class="payment-chip">Apple Pay</span>
+            <span class="payment-chip">Google Pay</span>
+            <span class="payment-chip">Klarna</span>
+            <span class="payment-chip">Überweisung</span>
+          </div>
+        </div>
+
+        <!-- ✏️ ZAKŁADKA RÜCKGABE — zmień warunki zwrotu w <p> -->
+        <div class="tab-panel p3">
+          <p><strong>30 Tage Rückgaberecht</strong> — ohne Angabe von Gründen.</p>
+          <p>Koszty odesłania ponosi kupujący, z wyjątkiem przypadków gdy towar jest niezgodny z opisem lub uszkodzony. Dla członków <strong>eBay Plus</strong> zwrot krajowy jest bezpłatny.</p>
+          <p>Przed odesłaniem prosimy o kontakt — pomożemy załatwić sprawę szybko i bez problemów.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+  <!-- end .main -->
+
+  <!-- ════════════════════════
+       STOPKA
+       ════════════════════════ -->
+  <footer class="ftr">
+    <div class="ftr-inner">
+
+      <!-- ✏️ LOGO W STOPCE
+           Zmień src= na ten sam link https:// co logo w nagłówku powyżej -->
+      <a href="https://www.ebay.de/str/farys7shop" target="_blank" rel="noopener">
+        <img class="ftr-logo" src="../src/logo.png" alt="Farys" loading="lazy">
+      </a>
+
+      <!-- ✏️ LINKI STOPKI — zmień razem z nawigacją (CTRL+H → "farys7shop") -->
+      <ul class="ftr-nav">
+        <li><a href="https://www.ebay.de/cnt/intermediatedFAQ?requested=farys7shop" target="_blank" rel="noopener">Kontakt</a></li>
+        <li><a href="https://www.ebay.de/str/farys7shop?_tab=1" target="_blank" rel="noopener">Über uns</a></li>
+        <li><a href="https://www.ebay.de/str/farys7shop?_tab=2" target="_blank" rel="noopener">Bewertungen</a></li>
+        <li><a href="https://www.ebay.de/str/farys7shop" target="_blank" rel="noopener">Unser Shop</a></li>
+      </ul>
+
+      <!-- ✏️ GODZINY OTWARCIA — zmień tekst "Pon–Pt: 09:00–17:00" -->
+      <div class="ftr-hours">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Pon–Pt: 09:00–17:00
+      </div>
+
+    </div>
+  </footer>
+
+</div>
+<!-- end #ft2 -->
+
+<!-- ════════════════════════════════════════════════════════════════════
+     EBAY DESCRIPTION END — Koniec kopiowania ↑
+     ════════════════════════════════════════════════════════════════════ -->
+
+</div>
+<!-- end preview wrapper -->
+
+</body>
+</html>
