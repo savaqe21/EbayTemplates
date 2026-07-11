@@ -832,6 +832,60 @@
       #ft .nav-linki a:not(.link-sklep) { display: none; }
       #ft .stopka-wewnetrzna { flex-direction: column; align-items: flex-start; gap: 10px; }
     }
+
+    /* ── GALERIA ZDJĘĆ (CSS-only, bez JavaScript) ─────────────────────── */
+
+    /* Wszystkie zdjęcia galerii domyślnie ukryte */
+    #ft .gal-img {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    /* Pokaż aktywne zdjęcie w oparciu o zaznaczony radio */
+    #gs1:checked ~ .zdjecie-karta .gal-img:nth-child(1),
+    #gs2:checked ~ .zdjecie-karta .gal-img:nth-child(2),
+    #gs3:checked ~ .zdjecie-karta .gal-img:nth-child(3),
+    #gs4:checked ~ .zdjecie-karta .gal-img:nth-child(4) { display: block; }
+
+    /* Pasek miniatur */
+    #ft .gal-thumbs {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    #ft .gal-thumbs label {
+      flex: 1 1 0;
+      cursor: pointer;
+      border: 2px solid var(--kolor-ramka);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--kolor-bialy);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      aspect-ratio: 1 / 1;
+    }
+
+    #ft .gal-thumbs label img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 4px;
+    }
+
+    #ft .gal-thumbs label:hover { border-color: var(--kolor-hover); }
+
+    /* Podświetl aktywną miniaturę */
+    #gs1:checked ~ .gal-thumbs label:nth-child(1),
+    #gs2:checked ~ .gal-thumbs label:nth-child(2),
+    #gs3:checked ~ .gal-thumbs label:nth-child(3),
+    #gs4:checked ~ .gal-thumbs label:nth-child(4) {
+      border-color: var(--kolor-glowny);
+      box-shadow: 0 0 0 2px rgba(0,191,200,0.15);
+    }
   </style>
 </head>
 <body style="background:#EDEFF2; margin:0; padding:20px 0; font-family:Arial,sans-serif;">
@@ -941,19 +995,33 @@
 
     <div class="produkt-grid">
 
-      <!-- Zdjęcie główne -->
+      <!-- Galeria zdjęć -->
       <div class="zdjecie-wrap">
+
+        <!-- Kontrolki galerii — ukryte radio, muszą być PRZED .zdjecie-karta i .gal-thumbs -->
+        <input type="radio" name="gs" id="gs1" checked aria-label="Zdjęcie 1">
+        <input type="radio" name="gs" id="gs2" aria-label="Zdjęcie 2">
+        <input type="radio" name="gs" id="gs3" aria-label="Zdjęcie 3">
+        <input type="radio" name="gs" id="gs4" aria-label="Zdjęcie 4">
+
+        <!-- ✏️ GALERIA ZDJĘĆ — zmień src="../src/..." na pełne linki https:// do swoich zdjęć
+             Możesz dodać lub usunąć <img class="gal-img"> (pamiętaj o odpowiednim radio i miniaturze) -->
         <div class="zdjecie-karta">
-          <!-- ✏️ ZDJĘCIE GŁÓWNE
-               src="../src/produkt.webp"  ← zmień na pełny link https:// do swojego zdjęcia
-               Przykład: src="https://twoja-domena.pl/zdjecie.jpg"
-               alt=  ← zmień opis na nazwę swojego produktu (dla dostępności i SEO) -->
-          <img src="../src/produkt.webp"
-               alt="Meble garażowe warsztatowe FR4113 — kompletny zestaw"
-               loading="eager">
+          <img class="gal-img" src="../src/produkt.webp"  alt="Meble garażowe FR4113 — widok 1" loading="eager">
+          <img class="gal-img" src="../src/produkt2.webp" alt="Meble garażowe FR4113 — widok 2" loading="lazy">
+          <img class="gal-img" src="../src/produkt3.webp" alt="Meble garażowe FR4113 — widok 3" loading="lazy">
+          <img class="gal-img" src="../src/produkt4.webp" alt="Meble garażowe FR4113 — widok 4" loading="lazy">
         </div>
 
-        <!-- ✏️ MINI-SPECS pod zdjęciem — 4 wiersze z wymiarami/cechami
+        <!-- ✏️ MINIATURY — zmień src="../src/..." tak samo jak w galerii powyżej -->
+        <div class="gal-thumbs">
+          <label for="gs1"><img src="../src/produkt.webp"  alt="Widok 1"></label>
+          <label for="gs2"><img src="../src/produkt2.webp" alt="Widok 2"></label>
+          <label for="gs3"><img src="../src/produkt3.webp" alt="Widok 3"></label>
+          <label for="gs4"><img src="../src/produkt4.webp" alt="Widok 4"></label>
+        </div>
+
+        <!-- ✏️ MINI-SPECS pod galerią — 4 wiersze z wymiarami/cechami
              Zmień wartości po prawej stronie każdego wiersza (np. "260 × 189 × 46 cm")
              Możesz też zmienić etykiety po lewej (np. "Wymiary", "Materiał") -->
         <div class="zdjecie-specs">

@@ -715,11 +715,83 @@
     }
 
     /* ────────────────────────────────────────────────────────────
+       GALERIA HERO (CSS-only, bez JavaScript)
+       ──────────────────────────────────────────────────────────── */
+
+    /* Wrapper galerii zastępuje hero-photo jako komórkę gridu */
+    #ft2 .hero-gallery {
+      display: flex;
+      flex-direction: column;
+      background: #1A1F28;
+      overflow: hidden;
+    }
+
+    /* hero-photo wewnątrz galerii — flex rośnie, by wypełnić przestrzeń */
+    #ft2 .hero-gallery .hero-photo {
+      flex: 1;
+    }
+
+    /* Wszystkie zdjęcia galerii domyślnie ukryte
+       (wyższy selektor niż #ft2 .hero-photo img, żeby poprawnie nadpisać display) */
+    #ft2 .hero-photo .gf-img {
+      display: none;
+      width: 100%;
+      height: 100%;
+      max-height: 480px;
+      object-fit: contain;
+      padding: 24px;
+    }
+
+    /* Pokaż aktywne zdjęcie w oparciu o zaznaczony radio */
+    #gf1:checked ~ .hero-gallery .hero-photo .gf-img:nth-child(1),
+    #gf2:checked ~ .hero-gallery .hero-photo .gf-img:nth-child(2),
+    #gf3:checked ~ .hero-gallery .hero-photo .gf-img:nth-child(3),
+    #gf4:checked ~ .hero-gallery .hero-photo .gf-img:nth-child(4) { display: block; }
+
+    /* Pasek miniatur na dole galerii */
+    #ft2 .gal-thumbs-f {
+      display: flex;
+      gap: 5px;
+      padding: 8px 12px 12px;
+      background: #141820;
+    }
+
+    #ft2 .gal-thumbs-f label {
+      flex: 1 1 0;
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      transition: border-color 0.14s;
+    }
+
+    #ft2 .gal-thumbs-f label img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 4px;
+    }
+
+    #ft2 .gal-thumbs-f label:hover { border-color: rgba(192,57,43,0.5); }
+
+    /* Podświetl aktywną miniaturę */
+    #gf1:checked ~ .hero-gallery .gal-thumbs-f label:nth-child(1),
+    #gf2:checked ~ .hero-gallery .gal-thumbs-f label:nth-child(2),
+    #gf3:checked ~ .hero-gallery .gal-thumbs-f label:nth-child(3),
+    #gf4:checked ~ .hero-gallery .gal-thumbs-f label:nth-child(4) {
+      border-color: var(--c-red);
+      box-shadow: 0 0 0 1px rgba(192,57,43,0.2);
+    }
+
+    /* ────────────────────────────────────────────────────────────
        RESPONSYWNOŚĆ
        ──────────────────────────────────────────────────────────── */
     @media screen and (max-width: 720px) {
       #ft2 .hero { grid-template-columns: 1fr; }
-      #ft2 .hero-photo { min-height: 260px; }
+      #ft2 .hero-photo { min-height: 240px; }
+      #ft2 .hero-gallery { min-height: auto; }
       #ft2 .hero-data { padding: 22px 18px; gap: 16px; }
       #ft2 .hero-title { font-size: 18px; }
       #ft2 .hero-price { font-size: 28px; }
@@ -735,6 +807,7 @@
       #ft2 .tabs-bar label { font-size: 12px; padding: 11px 8px; }
       #ft2 .tabs-bar label svg { display: none; }
       #ft2 .ftr-inner { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px; }
+      #ft2 .gal-thumbs-f { padding: 6px 10px 10px; }
     }
 
     @media screen and (max-width: 480px) {
@@ -795,20 +868,36 @@
   </header>
 
   <!-- ════════════════════════
-       HERO: Zdjęcie + Dane
+       HERO: Galeria + Dane
        ════════════════════════ -->
   <div class="hero">
 
-    <!-- Lewa: zdjęcie -->
-    <div class="hero-photo">
-      <!-- ✏️ ZDJĘCIE GŁÓWNE
-           src="../src/produkt.webp"  ← zmień na pełny link https:// do zdjęcia
-           Przykład: src="https://twoja-domena.pl/zdjecie.jpg"
-           alt= ← zmień opis na nazwę swojego produktu -->
-      <img src="../src/produkt.webp"
-           alt="Meble garażowe warsztatowe FR4113 — kompletny zestaw"
-           loading="eager"
-           style="max-width:100%; height:auto;">
+    <!-- Kontrolki galerii — ukryte radio, muszą być PRZED .hero-gallery -->
+    <input type="radio" name="gf" id="gf1" checked aria-label="Foto 1">
+    <input type="radio" name="gf" id="gf2" aria-label="Foto 2">
+    <input type="radio" name="gf" id="gf3" aria-label="Foto 3">
+    <input type="radio" name="gf" id="gf4" aria-label="Foto 4">
+
+    <!-- Lewa: galeria zdjęć -->
+    <div class="hero-gallery">
+
+      <!-- ✏️ GALERIA ZDJĘĆ — zmień src="../src/..." na pełne linki https:// do swoich zdjęć
+           Możesz dodać lub usunąć <img class="gf-img"> (pamiętaj o odpowiednim radio i miniaturze) -->
+      <div class="hero-photo">
+        <img class="gf-img" src="../src/produkt.webp"  alt="Meble garażowe FR4113 — widok 1" loading="eager">
+        <img class="gf-img" src="../src/produkt2.webp" alt="Meble garażowe FR4113 — widok 2" loading="lazy">
+        <img class="gf-img" src="../src/produkt3.webp" alt="Meble garażowe FR4113 — widok 3" loading="lazy">
+        <img class="gf-img" src="../src/produkt4.webp" alt="Meble garażowe FR4113 — widok 4" loading="lazy">
+      </div>
+
+      <!-- ✏️ MINIATURY — zmień src="../src/..." tak samo jak w galerii powyżej -->
+      <div class="gal-thumbs-f">
+        <label for="gf1"><img src="../src/produkt.webp"  alt="Foto 1"></label>
+        <label for="gf2"><img src="../src/produkt2.webp" alt="Foto 2"></label>
+        <label for="gf3"><img src="../src/produkt3.webp" alt="Foto 3"></label>
+        <label for="gf4"><img src="../src/produkt4.webp" alt="Foto 4"></label>
+      </div>
+
     </div>
 
     <!-- Prawa: dane produktu -->
@@ -858,6 +947,7 @@
       </a>
 
     </div>
+
   </div>
   <!-- end .hero -->
 
