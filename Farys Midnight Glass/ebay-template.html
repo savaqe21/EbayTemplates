@@ -21,7 +21,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* ════════════════════════════════════════════════════════════════
@@ -31,21 +31,21 @@
 
     /* ── KOLORY — zmień wartości żeby dostosować paletę ── */
     :root {
-      --bg:           #070810;
-      --bg-2:         #0C0E1E;
-      --glass:        rgba(255,255,255,0.04);
-      --glass-2:      rgba(255,255,255,0.07);
-      --glass-3:      rgba(255,255,255,0.10);
-      --border:       rgba(255,255,255,0.08);
-      --border-h:     rgba(255,255,255,0.18);
+      --bg:           #141828;   /* Głęboki granat zamiast czerni  */
+      --bg-2:         #1C2238;   /* Nieco jaśniejszy granat        */
+      --glass:        rgba(255,255,255,0.06);
+      --glass-2:      rgba(255,255,255,0.10);
+      --glass-3:      rgba(255,255,255,0.14);
+      --border:       rgba(255,255,255,0.12);
+      --border-h:     rgba(255,255,255,0.24);
       --violet:       #8B5CF6;   /* ← Kolor główny (fioletowy)   */
       --violet-h:     #7C3AED;   /* ← Fioletowy po najechaniu    */
       --violet-glow:  rgba(139,92,246,0.3);
       --cyan:         #06B6D4;   /* ← Akcent cyjanowy            */
       --cyan-glow:    rgba(6,182,212,0.2);
-      --text:         #F1F5F9;
-      --text-2:       #94A3B8;
-      --text-3:       #4E5A70;
+      --text:         #F8FAFC;
+      --text-2:       #C4CDD9;   /* Wyraźnie czytelniejszy        */
+      --text-3:       #8895A8;   /* Jaśniejszy od poprzedniego    */
     }
 
     /* Reset */
@@ -126,7 +126,7 @@
        ════════════════════════════════════════════════════════════════ */
 
     #ft3 .hdr {
-      background: rgba(7,8,16,0.96);
+      background: rgba(20,24,40,0.97);
       border-bottom: 1px solid var(--border);
       animation: fadeIn 0.5s ease both;
     }
@@ -197,9 +197,9 @@
     #ft3 .hero {
       position: relative;
       background:
-        radial-gradient(ellipse 70% 60% at 20% 0%,  rgba(80,40,160,0.22) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 50% at 80% 90%, rgba(6,182,212,0.14) 0%, transparent 65%),
-        linear-gradient(170deg, #0E1028 0%, #070810 60%, #0A0616 100%);
+        radial-gradient(ellipse 70% 60% at 20% 0%,  rgba(100,60,200,0.26) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 80% 90%, rgba(6,182,212,0.16) 0%, transparent 65%),
+        linear-gradient(170deg, #1D2445 0%, #141828 55%, #181430 100%);
       padding: 64px 32px 72px;
       overflow: hidden;
     }
@@ -278,11 +278,11 @@
 
     /* ✏️ TYTUŁ — zmień tekst wewnątrz <h1> */
     #ft3 .hero-title {
-      font-family: 'Syne', 'Arial Black', Arial, sans-serif;
+      font-family: 'Outfit', 'Arial Rounded MT Bold', Arial, sans-serif;
       font-size: 34px;
       font-weight: 800;
-      line-height: 1.12;
-      letter-spacing: -0.025em;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
       color: var(--text);
       animation: fadeInUp 0.65s cubic-bezier(.22,.68,0,1.2) 0.1s both;
     }
@@ -303,10 +303,10 @@
     }
 
     #ft3 .hero-price {
-      font-family: 'Syne', Arial, sans-serif;
+      font-family: 'Outfit', Arial, sans-serif;
       font-size: 42px;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       background: linear-gradient(110deg, #fff 0%, #C4B5FD 45%, #06B6D4 80%, #fff 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
@@ -359,7 +359,7 @@
       gap: 10px;
       background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
       color: #fff;
-      font-family: 'Syne', Arial, sans-serif;
+      font-family: 'Outfit', Arial, sans-serif;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.05em;
@@ -405,7 +405,7 @@
     /* Główne zdjęcie */
     #ft3 .gal-main {
       aspect-ratio: 1 / 1;
-      background: rgba(10,8,24,0.6);
+      background: rgba(18,20,40,0.7);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -432,7 +432,7 @@
       display: flex;
       gap: 8px;
       padding: 12px 16px 14px;
-      background: rgba(0,0,0,0.35);
+      background: rgba(10,12,28,0.55);
       border-top: 1px solid var(--border);
     }
 
@@ -535,9 +535,10 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 10.5px;
+      font-family: 'Outfit', Arial, sans-serif;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--violet);
       margin-bottom: 22px;
@@ -707,7 +708,7 @@
     #ft3 .tabs-bar {
       display: flex;
       border-bottom: 1px solid var(--border);
-      background: rgba(0,0,0,0.22);
+      background: rgba(0,0,0,0.12);
     }
 
     #ft3 .tabs-bar label {
