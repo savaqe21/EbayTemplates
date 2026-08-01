@@ -176,6 +176,109 @@
       flex-shrink: 0;
     }
 
+    /* ── Expandable template group ── */
+    .card-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-group > summary {
+      list-style: none;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .card-group > summary::-webkit-details-marker { display: none; }
+    .card-group > summary::marker { display: none; }
+
+    /* No lift on hover — it has a dropdown below */
+    .card-group > summary.card:hover { transform: none; box-shadow: none; }
+
+    /* Open state: connect seamlessly to variant list */
+    .card-group[open] > summary.card {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-color: var(--teal);
+      border-bottom-color: transparent;
+    }
+
+    .card-toggle {
+      font-size: 14px;
+      color: var(--teal);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .card-group[open] .card-toggle { transform: rotate(180deg); }
+
+    /* Variant sub-list */
+    .variant-list {
+      border: 1px solid var(--teal);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      overflow: hidden;
+    }
+
+    .variant-card {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 11px 18px;
+      background: var(--surface-2);
+      text-decoration: none;
+      color: inherit;
+      border-top: 1px solid var(--border);
+      transition: background 0.14s;
+    }
+
+    .variant-card:first-child { border-top: none; }
+
+    .variant-card:hover { background: rgba(0, 191, 200, 0.07); }
+
+    .swatches {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .swatch {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+
+    .variant-copy { flex: 1; min-width: 0; }
+
+    .variant-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .variant-sub {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .variant-arrow {
+      font-size: 13px;
+      color: var(--muted-dim);
+      flex-shrink: 0;
+      transition: color 0.14s ease, transform 0.14s ease;
+    }
+
+    .variant-card:hover .variant-arrow {
+      color: var(--teal);
+      transform: translateX(3px);
+    }
+
     /* ── Footer ── */
     .page-footer {
       font-size: 12px;
@@ -213,15 +316,64 @@
         <span class="card-arrow">→</span>
       </a>
 
-      <!-- Szablon 2 — AKTYWNY -->
-      <a class="card" href="Farys DE Premium/ebay-template.html" target="_blank" rel="noopener">
-        <div class="card-num">02</div>
-        <div class="card-body">
-          <div class="card-title">Meble garażowe FR4113 - Premium DE</div>
-          <div class="card-sub">Nowy design · Grafitowy + czerwony · Rynek niemiecki</div>
+      <!-- Szablon 2 — AKTYWNY (4 warianty kolorystyczne) -->
+      <details class="card-group">
+        <summary class="card">
+          <div class="card-num">02</div>
+          <div class="card-body">
+            <div class="card-title">Meble garażowe FR4113 — Premium DE</div>
+            <div class="card-sub">4 warianty kolorystyczne · kliknij żeby wybrać</div>
+          </div>
+          <span class="card-toggle">▾</span>
+        </summary>
+
+        <div class="variant-list">
+          <a class="variant-card" href="Farys DE Premium/ebay-template.html" target="_blank" rel="noopener">
+            <div class="swatches">
+              <span class="swatch" style="background:#1E2229;"></span>
+              <span class="swatch" style="background:#C0392B;"></span>
+            </div>
+            <div class="variant-copy">
+              <div class="variant-name">Grafitowy + Czerwony</div>
+              <div class="variant-sub">Oryginalny design Premium DE</div>
+            </div>
+            <span class="variant-arrow">→</span>
+          </a>
+          <a class="variant-card" href="Farys DE Premium/ebay-template-yellow.html" target="_blank" rel="noopener">
+            <div class="swatches">
+              <span class="swatch" style="background:#1E2018;"></span>
+              <span class="swatch" style="background:#F5B800;"></span>
+            </div>
+            <div class="variant-copy">
+              <div class="variant-name">Żółty Jasny</div>
+              <div class="variant-sub">Warsztatowy · jasne tło</div>
+            </div>
+            <span class="variant-arrow">→</span>
+          </a>
+          <a class="variant-card" href="Farys DE Premium/ebay-template-yellow-dark.html" target="_blank" rel="noopener">
+            <div class="swatches">
+              <span class="swatch" style="background:#1A1A1A;"></span>
+              <span class="swatch" style="background:#F5B800;"></span>
+            </div>
+            <div class="variant-copy">
+              <div class="variant-name">Żółty Ciemny</div>
+              <div class="variant-sub">Warsztatowy · ciemne tło</div>
+            </div>
+            <span class="variant-arrow">→</span>
+          </a>
+          <a class="variant-card" href="Farys DE Premium/ebay-template-teal.html" target="_blank" rel="noopener">
+            <div class="swatches">
+              <span class="swatch" style="background:#0D1117;"></span>
+              <span class="swatch" style="background:#00BFC8;"></span>
+            </div>
+            <div class="variant-copy">
+              <div class="variant-name">Turkusowy Farys</div>
+              <div class="variant-sub">Kolory firmowe z loga</div>
+            </div>
+            <span class="variant-arrow">→</span>
+          </a>
         </div>
-        <span class="card-arrow">→</span>
-      </a>
+      </details>
 
       <!-- Szablon 3 — AKTYWNY -->
       <a class="card" href="Farys Midnight Glass/ebay-template.html" target="_blank" rel="noopener">
