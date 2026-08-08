@@ -180,8 +180,9 @@
     #ft4 .sec-hdr-logo {
       height: 26px;
       width: auto;
-      filter: brightness(0) invert(1);
-      opacity: 0.85;
+      background: rgba(255,255,255,0.22);
+      padding: 3px 10px;
+      border-radius: 4px;
     }
 
     /* ════════════════════════════════════════════════════════════════
@@ -726,10 +727,6 @@
     <input type="radio" name="g" id="g2" class="ft4-r" aria-label="Zdjęcie 2">
     <input type="radio" name="g" id="g3" class="ft4-r" aria-label="Zdjęcie 3">
     <input type="radio" name="g" id="g4" class="ft4-r" aria-label="Zdjęcie 4">
-    <input type="radio" name="g" id="g5" class="ft4-r" aria-label="Zdjęcie 5">
-    <input type="radio" name="g" id="g6" class="ft4-r" aria-label="Zdjęcie 6">
-    <input type="radio" name="g" id="g7" class="ft4-r" aria-label="Zdjęcie 7">
-    <input type="radio" name="g" id="g8" class="ft4-r" aria-label="Zdjęcie 8">
 
     <div class="sec-hdr">
       <div class="sec-hdr-left">
@@ -748,29 +745,20 @@
         <!-- Główne zdjęcie -->
         <div class="gal-main">
           <!-- ✏️ ZDJĘCIA GŁÓWNE — zmień src="..." na linki https:// do Twoich zdjęć
-               Możesz mieć mniej niż 8 — usuń niepotrzebne <img> i <label> poniżej,
-               pamiętaj żeby usunąć odpowiednie <input> wyżej (gal1..gal8) -->
+               Możesz dodać więcej — dodaj <img class="gal-img"> i odpowiedni <input> + <label> powyżej -->
           <img class="gal-img" src="../src/produkt.webp" alt="Meble garażowe FR4113">
-          <img class="gal-img" src="../src/produkt.webp" alt="FR4113 — widok 2">
-          <img class="gal-img" src="../src/produkt.webp" alt="FR4113 — widok 3">
-          <img class="gal-img" src="../src/produkt.webp" alt="FR4113 — widok 4">
-          <img class="gal-img" src="../src/produkt.webp" alt="FR4113 — widok 5">
-          <img class="gal-img" src="../src/produkt.webp" alt="FR4113 — widok 6">
-          <img class="gal-img" src="../src/produkt.webp" alt="FR4113 — widok 7">
-          <img class="gal-img" src="../src/produkt.webp" alt="FR4113 — widok 8">
+          <img class="gal-img" src="../src/produkt2.webp" alt="FR4113 — widok 2">
+          <img class="gal-img" src="../src/produkt3.webp" alt="FR4113 — widok 3">
+          <img class="gal-img" src="../src/produkt4.webp" alt="FR4113 — widok 4">
         </div>
 
         <!-- Miniaturki 4×2 -->
         <div class="gal-thumbs">
           <!-- ✏️ MINIATURY — zmień src="..." na te same linki co zdjęcia główne -->
           <label for="g1"><img src="../src/produkt.webp" alt="1"></label>
-          <label for="g2"><img src="../src/produkt.webp" alt="2"></label>
-          <label for="g3"><img src="../src/produkt.webp" alt="3"></label>
-          <label for="g4"><img src="../src/produkt.webp" alt="4"></label>
-          <label for="g5"><img src="../src/produkt.webp" alt="5"></label>
-          <label for="g6"><img src="../src/produkt.webp" alt="6"></label>
-          <label for="g7"><img src="../src/produkt.webp" alt="7"></label>
-          <label for="g8"><img src="../src/produkt.webp" alt="8"></label>
+          <label for="g2"><img src="../src/produkt2.webp" alt="2"></label>
+          <label for="g3"><img src="../src/produkt3.webp" alt="3"></label>
+          <label for="g4"><img src="../src/produkt4.webp" alt="4"></label>
         </div>
       </div>
 
