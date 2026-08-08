@@ -38,6 +38,7 @@
       --accent:       #00BFC8;   /* ← Kolor główny (turkus)          */
       --accent-h:     #00929A;   /* ← Kolor po najechaniu            */
       --accent-text:  #FFFFFF;   /* ← Tekst na kolorowym tle         */
+      --accent-glow:  rgba(0,191,200,0.28); /* ← Poświata przycisku  */
       --bg:           #F2F4F6;   /* Tło strony                       */
       --card:         #FFFFFF;   /* Tło kart / sekcji                */
       --hdr-bg:       #FFFFFF;   /* Tło nagłówka                     */
@@ -160,9 +161,9 @@
       align-items: center;
       justify-content: space-between;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%, rgba(0,0,0,0.10) 100%),
+        radial-gradient(ellipse 55% 140% at 12% 50%, rgba(255,255,255,0.18) 0%, transparent 62%),
         linear-gradient(110deg, var(--accent-h) 0%, var(--accent) 100%);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.14);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.14);
       padding: 11px 20px;
     }
 
@@ -358,7 +359,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-h) 100%);
       color: var(--accent-text);
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 14px;
@@ -366,13 +367,14 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 13px 28px;
-      border-radius: 4px;
+      border-radius: 10px;
       text-decoration: none;
-      transition: background 0.15s, transform 0.15s;
+      transition: transform 0.2s, filter 0.2s;
       align-self: flex-start;
+      animation: ft4Glow 3s ease-in-out 1s infinite;
     }
 
-    #ft4 .btn-buy:hover { background: var(--accent-h); transform: translateY(-1px); }
+    #ft4 .btn-buy:hover { filter: brightness(1.12); transform: translateY(-2px) scale(1.02); }
     #ft4 .btn-buy svg { width: 17px; height: 17px; flex-shrink: 0; }
 
     #ft4 .prod-desc {
@@ -656,6 +658,12 @@
       #ft4 .trust-item { flex: 0 0 50%; border-right: none; border-bottom: 1px solid var(--border); justify-content: flex-start; padding: 10px 14px; }
       #ft4 .ftr { flex-direction: column; align-items: flex-start; gap: 12px; }
       #ft4 .ftr-nav { margin-left: 0; flex-wrap: wrap; }
+    }
+
+    /* Pulsujący glow na przycisku KUP TERAZ (inspiracja: Midnight Glass) */
+    @keyframes ft4Glow {
+      0%, 100% { box-shadow: 0 0 16px var(--accent-glow), 0 4px 12px rgba(0,0,0,0.12); }
+      50%       { box-shadow: 0 0 34px var(--accent-glow), 0 6px 20px rgba(0,0,0,0.18); }
     }
 
   </style>
