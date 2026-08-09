@@ -36,7 +36,8 @@
     /* ── KOLORY — zmień wartości żeby dostosować paletę ── */
     :root {
       --accent:       #F5B800;   /* ← Kolor główny (żółty warsztatowy) */
-      --accent-h:     #DDA600;   /* ← Kolor po najechaniu            */
+      --accent-h:     #DDA600;   /* ← Ciemniejszy (lewy koniec)      */
+      --accent-l:     #FFD234;   /* ← Jaśniejszy (prawy koniec)      */
       --accent-text:  #1A1A14;   /* ← Ciemny tekst na żółtym tle     */
       --accent-glow:  rgba(245,184,0,0.28); /* ← Poświata przycisku  */
       --bg:           #F2F4F6;   /* Tło strony                       */
@@ -162,7 +163,7 @@
       justify-content: space-between;
       background:
         radial-gradient(ellipse 55% 140% at 12% 50%, rgba(255,255,255,0.18) 0%, transparent 62%),
-        linear-gradient(110deg, var(--accent-h) 0%, var(--accent) 100%);
+        linear-gradient(110deg, var(--accent-h) 0%, var(--accent) 55%, var(--accent-l) 100%);
       box-shadow: 0 2px 8px rgba(0,0,0,0.14);
       padding: 11px 20px;
     }
